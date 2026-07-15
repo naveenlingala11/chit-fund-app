@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Modal, ScrollView, TextInput, TouchableOpacity, ActivityIndicator, Animated, Linking } from 'react-native';
+import { CHIT_PRESETS } from '@/constants/config';
 
 const formatDateTime = (dateStr: string | Date | undefined) => {
   if (!dateStr) return 'N/A';
@@ -144,11 +145,7 @@ export const ChitModals: React.FC<ChitModalsProps> = ({ appState, styles, isDark
                 ⚡ Quick Preset Templates
               </Text>
               <View style={{ flexDirection: 'row', gap: 6, marginBottom: 14 }}>
-                {[
-                  { label: '₹1 Lakh (10M)', value: '100000', members: '10', commission: '5', day: '5' },
-                  { label: '₹5 Lakh (20M)', value: '500000', members: '20', commission: '5', day: '10' },
-                  { label: '₹10 Lakh (20M)', value: '1000000', members: '20', commission: '5', day: '15' },
-                ].map((t, idx) => (
+                {CHIT_PRESETS.map((t, idx) => (
                   <TouchableOpacity
                     key={idx}
                     style={{

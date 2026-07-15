@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Alert, Platform } from 'react-native';
 import { ApiClient, User, Chit, Payment, Surety, Member, Auction } from '../api/apiClient';
-
-const DEFAULT_SERVER_URL = Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000';
+import { API_CONFIG } from '@/constants/config';
 
 export const useChitApp = () => {
-  const [serverUrl, setServerUrl] = useState(DEFAULT_SERVER_URL);
+  const [serverUrl, setServerUrl] = useState(API_CONFIG.getInitialServerUrl());
   const api = new ApiClient(serverUrl);
 
   // Authentication & Users

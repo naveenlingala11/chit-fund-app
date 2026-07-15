@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, TextInput, ActivityIndicator, Alert } from 'react-native';
-import * as Linking from 'expo-linking';
+import { View, Text, ScrollView, TouchableOpacity, TextInput, ActivityIndicator, Alert, Linking } from 'react-native';
+import { SUPPORT_CONFIG } from '@/constants/config';
 
 interface HelpSupportProps {
   appState: any;
@@ -62,11 +62,11 @@ export const HelpSupport: React.FC<HelpSupportProps> = ({ appState, styles, isDa
   };
 
   const handleSupportCall = () => {
-    Linking.openURL('tel:+919876543210');
+    Linking.openURL(`tel:${SUPPORT_CONFIG.PHONE}`);
   };
 
   const handleSupportWhatsApp = () => {
-    Linking.openURL('https://api.whatsapp.com/send?phone=919876543210&text=Hi Support, I need help with the ChitSangham App!');
+    Linking.openURL(`https://api.whatsapp.com/send?phone=${SUPPORT_CONFIG.WHATSAPP_PHONE}&text=${encodeURIComponent(SUPPORT_CONFIG.WHATSAPP_SUPPORT_MSG)}`);
   };
 
   return (
