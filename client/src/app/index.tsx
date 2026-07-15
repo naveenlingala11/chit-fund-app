@@ -57,28 +57,6 @@ export default function ChitAppEntry() {
         style={{ flex: 1 }} 
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
-        {/* Network Header */}
-        <View style={styles.networkHeader}>
-          <View style={styles.serverDetails}>
-            <View 
-              style={[
-                styles.statusDot, 
-                { backgroundColor: auctionSocket.connectionStatus === 'connected' ? '#10B981' : '#EF4444' }
-              ]} 
-            />
-            <Text style={styles.serverText}>
-              {auctionSocket.connectionStatus === 'connected' 
-                ? `Connected: ${serverUrl.replace('http://', '')}` 
-                : 'Offline Mode (Local Sim)'}
-            </Text>
-          </View>
-          <TouchableOpacity 
-            style={styles.settingsBtn} 
-            onPress={() => setShowServerSettings(true)}
-          >
-            <Text style={styles.settingsBtnText}>⚙️</Text>
-          </TouchableOpacity>
-        </View>
 
         {/* View State Router */}
         {viewState === 'login' && (
