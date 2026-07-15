@@ -1,12 +1,12 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "ChitSangham Server",
+  "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon",
-    "build": "tsc && powershell -Command \"New-Item -ItemType Directory -Force -Path dist/db; Copy-Item -Path src/db/schema.sql -Destination dist/db/ -Force\"",
+    "build": "tsc && node -e \"const fs=require('fs'); fs.mkdirSync('dist/db', {recursive:true}); fs.copyFileSync('src/db/schema.sql', 'dist/db/schema.sql');\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,20 +14,20 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "pg": "^8.22.0",
-    "socket.io": "^4.8.3"
-  },
-  "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.1.1",
     "@types/pg": "^8.20.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.22.0",
+    "socket.io": "^4.8.3",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
-    "tsx": "^4.23.1",
-    "typescript": "^7.0.2"
+    "tsx": "^4.23.1"
   }
 }
